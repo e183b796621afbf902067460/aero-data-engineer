@@ -4,7 +4,6 @@ from decouple import config
 from pathlib import Path
 from typing import List
 from functools import lru_cache
-import os
 
 
 class AppSettings(BaseSettings):
@@ -24,6 +23,9 @@ class AppSettings(BaseSettings):
     ]
 
     BASE_PATH = Path(__file__[:-15]).resolve()
+
+    SERVER_HOST = config('SERVER_HOST', cast=str, default='0.0.0.0')
+    SERVER_PORT = config('SERVER_PORT', cast=int, default=8000)
 
     class Config:
         case_sensitive = True
