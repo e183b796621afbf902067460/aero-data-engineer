@@ -6,14 +6,6 @@ RUN apt-get update && apt-get install -y git
 
 USER airflow
 
-ENV ETH_HTTP_PROVIDER="https://rpc.ankr.com/eth"
-ENV BSC_HTTP_PROVIDER="https://rpc.ankr.com/bsc"
-ENV AVAX_HTTP_PROVIDER="https://rpc.ankr.com/avalanche"
-ENV ARB_HTTP_PROVIDER="https://rpc.ankr.com/arbitrum"
-ENV FTM_HTTP_PROVIDER="https://rpc.ankr.com/fantom"
-ENV MATIC_HTTP_PROVIDER="https://rpc.ankr.com/polygon"
-ENV OPT_HTTP_PROVIDER="https://rpc.ankr.com/optimism"
-
 RUN pip install clickhouse-sqlalchemy
 RUN pip install clickhouse-driver
 

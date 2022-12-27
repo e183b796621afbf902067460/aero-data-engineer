@@ -9,7 +9,7 @@ from head.interfaces.db.settings.interface import ISettings
 
 
 class DWHSettings(ISettings):
-    DB_ADDRESS = os.getenv('CLICKHOUSE_ADDRESS', '')
+    DB_ADDRESS = os.getenv('CLICKHOUSE_HOST', '')
     DB_USER = os.getenv('CLICKHOUSE_USER', '')
     DB_PASSWORD = quote_plus(os.getenv('CLICKHOUSE_PASSWORD', ''))
     DB_NAME = os.getenv('CLICKHOUSE_DB', '')
