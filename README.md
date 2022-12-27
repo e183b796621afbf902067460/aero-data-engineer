@@ -81,6 +81,20 @@ docker-compose up airflow-init
 docker-compose up -d
 ```
 
+# Services
+
+`Apache Airflow` at [http://0.0.0.0:8080](http://0.0.0.0:8080), by default:
+  
+  - Username:
+    - airflow
+  - Password:
+    - airflow
+ 
+`FastAPI` at [http://0.0.0.0:8000/docs](http://0.0.0.0:8000/docs).
+
+`ReactJS` at [http://0.0.0.0:3000](http://0.0.0.0:3000).
+
+
 # Exit
 - To stop all running containers:
 ```
