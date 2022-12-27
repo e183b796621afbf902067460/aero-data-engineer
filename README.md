@@ -5,7 +5,7 @@ Depends on: [defi-head-core](https://github.com/e183b796621afbf902067460/defi-he
 
 # Configuration
 
-First of all to configure an DeFi Management project correctly need to do next steps:
+First of all to configure DeFi Management project correctly need to do next steps:
 
 - Clone current repository:
 ```
