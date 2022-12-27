@@ -62,6 +62,12 @@ cd defi-bachelor-thesis/
     FASTAPI_HOST: fastapi
     FASTAPI_PORT: 8000
     ```
+  - Set CORS in [settings.py](https://github.com/e183b796621afbf902067460/defi-bachelor-thesis/blob/master/defi-fastapi/src/cfg/settings.py) to allow [frontend](https://github.com/e183b796621afbf902067460/defi-bachelor-thesis/tree/master/defi-react), by default:
+    ```python
+    BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = [
+        f"http://0.0.0.0:3000"
+    ]
+    ```
 
 
 # Docker
