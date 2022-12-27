@@ -59,7 +59,28 @@ x-airflow-common:
     AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
     AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth'
     _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
+
     PYTHONPATH: "airflow:${PYTHONPATH}"
+
+    POSTGRES_HOST: orm
+    POSTGRES_USER: defi_management
+    POSTGRES_PASSWORD: defi_management
+    POSTGRES_DB: defi_management
+
+    CLICKHOUSE_HOST: clickhouse
+    CLICKHOUSE_DB: defi_management
+    CLICKHOUSE_USER: defi_management
+    CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT: 1
+    CLICKHOUSE_PASSWORD: defi_management
+
+    ETH_HTTP_PROVIDER: https://rpc.ankr.com/eth
+    BSC_HTTP_PROVIDER: https://rpc.ankr.com/bsc
+    AVAX_HTTP_PROVIDER: https://rpc.ankr.com/avalanche
+    ARB_HTTP_PROVIDER: https://rpc.ankr.com/arbitrum
+    FTM_HTTP_PROVIDER: https://rpc.ankr.com/fantom
+    MATIC_HTTP_PROVIDER: https://rpc.ankr.com/polygon
+    OPT_HTTP_PROVIDER: https://rpc.ankr.com/optimism
+
   volumes:
     - ./defi-airflow/dags:/opt/airflow/dags
     - ./defi-airflow/logs:/opt/airflow/logs
@@ -98,12 +119,8 @@ services:
       context: ./defi-fastapi
       dockerfile: Dockerfile
     environment:
+      <<: *airflow-common-env
       PYTHONPATH: ${PYTHONPATH}:/code/src
-
-      DB_ADDRESS: orm
-      DB_NAME: defi_management
-      DB_USER: defi_management
-      DB_PASSWORD: defi_management
 
       SERVER_HOST: 0.0.0.0
       SERVER_PORT: 8000
@@ -122,10 +139,7 @@ services:
   orm:
     image: postgres:13
     environment:
-      POSTGRES_HOST: orm
-      POSTGRES_USER: defi_management
-      POSTGRES_PASSWORD: defi_management
-      POSTGRES_DB: defi_management
+      <<: *airflow-common-env
     volumes:
       - ./defi-fastapi/src/orm/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
     healthcheck:
@@ -139,11 +153,7 @@ services:
   clickhouse:
     image: clickhouse/clickhouse-server
     environment:
-      CLICKHOUSE_HOST: clickhouse
-      CLICKHOUSE_DB: defi_management
-      CLICKHOUSE_USER: defi_management
-      CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT: 1
-      CLICKHOUSE_PASSWORD: defi_management
+      <<: *airflow-common-env
     ports:
       - 8123:8123
     volumes:
@@ -232,16 +242,6 @@ services:
       # Required to handle warm shutdown of the celery workers properly
       # See https://airflow.apache.org/docs/docker-stack/entrypoint.html#signal-propagation
       DUMB_INIT_SETSID: "0"
-
-      PG_ADDRESS: orm
-      PG_USER: defi_management
-      PG_PASSWORD: defi_management
-      PG_DB: defi_management
-
-      CLICKHOUSE_ADDRESS: clickhouse
-      CLICKHOUSE_DB: defi_management
-      CLICKHOUSE_USER: defi_management
-      CLICKHOUSE_PASSWORD: defi_management
 
     restart: always
     depends_on:
