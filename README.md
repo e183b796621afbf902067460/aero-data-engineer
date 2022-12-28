@@ -104,6 +104,36 @@ docker-compose up -d
 
 `ReactJS` at [http://0.0.0.0:3000](http://0.0.0.0:3000).
 
+# Fixtures
+
+Additional fixtures can be added to check project's success rate.
+
+- See existing containers:
+```
+docker ps
+```
+
+- Copy `fastapi's` \<CONTAINER ID> and run inside of it:
+```
+docker exec -it <CONTAINER ID> pytest _fixtures/conftest.py
+```
+
+__By__ __default:__
+
+- Username
+```
+defi_management
+```
+- Password
+```
+defi_management
+```
+- Chains
+`ETH`, `BSC`, `FTM`, `AVAX`.
+- Protocols
+`Aave`, `Curve`, `UniSwap`, `SushiSwap`, `PancakeSwap`, `Convex`, `Geist`, `Nereus`, `Ellipsis`,  `Sturdy`.
+- Yields
+`Lending`, `Staking`, `Farming`, `DEX`.
 
 # Exit
 - To stop all running containers:
