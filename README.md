@@ -68,6 +68,10 @@ cd defi-bachelor-thesis/
         f"http://0.0.0.0:3000"
     ]
     ```
+  - Set CORS in [axios.js](https://github.com/e183b796621afbf902067460/defi-bachelor-thesis/blob/master/defi-react/src/services/axios.js) to allow [backend](https://github.com/e183b796621afbf902067460/defi-bachelor-thesis/tree/master/defi-fastapi), by default:
+    ```js
+    const baseURL = "http://0.0.0.0:8000/api/v1/";
+    ```
 
 
 # Docker
