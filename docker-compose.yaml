@@ -130,7 +130,7 @@ services:
     ports:
       - 8000:8000
     volumes:
-      - .:/app/
+      - ./defi-fastapi/_fixtures:/code/_fixtures
     depends_on:
       - orm
     networks:
