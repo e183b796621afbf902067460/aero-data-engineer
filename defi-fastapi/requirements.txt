@@ -13,4 +13,4 @@ SQLAlchemy~=1.4.40
 SQLAlchemy-Utils~=0.38.3
 uvicorn~=0.20.0
 web3~=5.30.0
-defi-head-core @ git+https://github.com/e183b796621afbf902067460/defi-head-core.git@71c63885d3dec58b92087ace732e65b16e6bb45b
+httpx~=0.23.1
