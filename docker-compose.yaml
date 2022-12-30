@@ -81,6 +81,8 @@ x-airflow-common:
     MATIC_HTTP_PROVIDER: https://rpc.ankr.com/polygon
     OPT_HTTP_PROVIDER: https://rpc.ankr.com/optimism
 
+    AIRFLOW_CONN_POSTGRES_DEFI_MANAGEMENT: postgresql://defi_management:defi_management@orm/defi_management
+
   volumes:
     - ./defi-airflow/dags:/opt/airflow/dags
     - ./defi-airflow/logs:/opt/airflow/logs
