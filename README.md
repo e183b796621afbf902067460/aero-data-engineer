@@ -95,10 +95,14 @@ docker-compose up -d
 
 `Apache Airflow` at [http://0.0.0.0:8080](http://0.0.0.0:8080), by default:
   
-  - Username:
-    - airflow
-  - Password:
-    - airflow
+ - Username
+```
+airflow
+```
+- Password
+```
+airflow
+```
  
 `FastAPI` at [http://0.0.0.0:8000/docs](http://0.0.0.0:8000/docs).
 
