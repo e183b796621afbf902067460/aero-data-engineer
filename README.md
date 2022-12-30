@@ -81,12 +81,12 @@ cd defi-bachelor-thesis/
 docker build -t defi_airflow defi-airflow/
 ```
 
-- Compose:
+- Compose `airflow-init`:
 ```
 docker-compose up airflow-init
 ```
 
-- Then:
+- Run docker compose:
 ```
 docker-compose up -d
 ```
