@@ -46,7 +46,10 @@ cd defi-bachelor-thesis/
     POSTGRES_PASSWORD: defi_management
     POSTGRES_DB: defi_management
     ```
-  
+  - PostgreSQL connection ID in [airflow-common-env](https://github.com/e183b796621afbf902067460/defi-bachelor-thesis/blob/master/docker-compose.yaml#L50) service, by default:
+    ```
+    AIRFLOW_CONN_POSTGRES_DEFI_MANAGEMENT: postgresql://defi_management:defi_management@orm/defi_management
+    ```
   - Back-end environment variables in [fastapi](https://github.com/e183b796621afbf902067460/defi-bachelor-thesis/blob/master/docker-compose.yaml#L117) service, by default:
     ```
     SERVER_HOST: 0.0.0.0
