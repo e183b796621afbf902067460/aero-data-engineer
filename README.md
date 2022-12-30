@@ -125,7 +125,7 @@ docker ps
 docker exec -it <CONTAINER ID> pytest _fixtures/conftest.py
 ```
 
-__By__ __default:__
+__To__ __authorize__ __at__ __[FastAPI](http://0.0.0.0:8000/docs)__ __or__ __[ReactJS](http://0.0.0.0:3000)__, __by__ __default__:
 
 - Username
 ```
