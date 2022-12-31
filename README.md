@@ -17,6 +17,16 @@ git clone https://github.com/e183b796621afbf902067460/defi-bachelor-thesis.git
 cd defi-bachelor-thesis/
 ```
 
+- Create requirement folders:
+```
+mkdir defi-airflow/logs
+```
+
+- Put into `.env` permissions data:
+```
+echo -e "AIRFLOW_UID=$(id -u)\nAIRFLOW_GID=0" > defi-airflow/.env
+```
+
 - Set the __ENV__ variables in `docker-compose.yaml`:
   
   - Providers environment variables in [airflow-common-env](https://github.com/e183b796621afbf902067460/defi-bachelor-thesis/blob/master/docker-compose.yaml#L50) service, by default:
