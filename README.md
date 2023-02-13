@@ -58,7 +58,7 @@ So, after DAG's ran need to do next steps to see where our data are stored:
 sudo docker exec -it <clickhouse ID> clickhouse-client
 ```
 
-Set needed database:
+Choose needed database:
 ```
 use clickhouse;
 ```
