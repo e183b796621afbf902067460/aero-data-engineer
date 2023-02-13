@@ -19,7 +19,7 @@ def do(context, configs: dict) -> List[list]:
         fabric_name='users',
         handler_name=configs['source']
     ).produce_handler()
-    handler.do()
+    handler.do(json_=r.json())
 
     df = pd.DataFrame([handler.pit_users])
     df['h_source'], df['h_endpoint'] = configs['source'], configs['endpoint']

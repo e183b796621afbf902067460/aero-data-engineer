@@ -7,20 +7,17 @@ from urllib.parse import quote_plus
 
 
 class ORMEngine:
-    DB_ADDRESS = os.getenv('POSTGRES_HOST', 'localhost')
-    DB_USER = os.getenv('POSTGRES_USER', 'username')
-    DB_PASSWORD = quote_plus(os.getenv('POSTGRES_PASSWORD', '111222'))
-    DB_NAME = os.getenv('POSTGRES_DB', 'test')
+    DB_ADDRESS = os.getenv('POSTGRES_HOST', '')
+    DB_USER = os.getenv('POSTGRES_USER', '')
+    DB_PASSWORD = quote_plus(os.getenv('POSTGRES_PASSWORD', ''))
+    DB_NAME = os.getenv('POSTGRES_DB', '')
 
     DB_URL = f'postgresql://{DB_USER}:{DB_PASSWORD}@{DB_ADDRESS}/{DB_NAME}'
 
     @classmethod
     def get_session(cls) -> Session:
         s = Session(cls.get_engine())
-        try:
-            yield s
-        finally:
-            s.close()
+        return s
 
     @classmethod
     def get_engine(cls) -> Engine:

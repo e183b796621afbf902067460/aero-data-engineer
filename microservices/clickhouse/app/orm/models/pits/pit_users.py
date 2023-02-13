@@ -16,7 +16,7 @@ class pitUsers(Base):
 
     @declared_attr
     def __table_args__(cls):
-        return engines.MergeTree(order_by=['pit_users_uuid']), {'schema': ORMEngine.DB_NAME}
+        return engines.MergeTree(order_by=['pit_user_uuid']), {'schema': ORMEngine.DB_NAME}
 
     pit_user_uuid = Column(UUID, primary_key=True, server_default=text("generateUUIDv4()"))
 
@@ -34,18 +34,18 @@ class pitUsers(Base):
     pit_gender = Column(Nullable(Text))
     pit_phone_number = Column(Nullable(Text))
     pit_social_insurance_number = Column(Nullable(Integer))
-    pit_date_of_birth = Column(Nullable(DateTime))
+    pit_date_of_birth = Column(Nullable(Text))
     pit_employment_title = Column(Nullable(Text))
     pit_employment_key_skill = Column(Nullable(Text))
     pit_address_city = Column(Nullable(Text))
     pit_address_street_name = Column(Nullable(Text))
     pit_address_street_address = Column(Nullable(Text))
-    pit_address_zip_code = Column(Nullable(Integer))
+    pit_address_zip_code = Column(Nullable(Text))
     pit_address_state = Column(Nullable(Text))
     pit_address_country = Column(Nullable(Text))
     pit_address_coordinates_lat = Column(Nullable(Float))
     pit_address_coordinates_lng = Column(Nullable(Float))
-    pit_credit_card_cc_number = Column(Nullable(Integer))
+    pit_credit_card_cc_number = Column(Nullable(Text))
     pit_subscription_plan = Column(Nullable(Text))
     pit_subscription_status = Column(Nullable(Text))
     pit_subscription_payment_method = Column(Nullable(Text))

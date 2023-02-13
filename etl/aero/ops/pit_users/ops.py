@@ -33,7 +33,7 @@ def extract_from_vault(context) -> List[dict]:
                 'source': source,
                 'endpoint': endpoint
             },
-            mapping_key=f'subtask_for_{source}_{endpoint}'
+            mapping_key=f'subtask_for_{source}_users_endpoint'
         )
 
 

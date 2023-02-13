@@ -3,10 +3,10 @@ run_storage:
   class: PostgresRunStorage
   config:
     postgres_db:
-      username: aero-dagster-postgres
-      password: aero-dagster-postgres
-      hostname: aero-dagster-postgres
-      db_name: aero-dagster-postgres
+      username: dagster-postgres
+      password: dagster-postgres
+      hostname: dagster-postgres
+      db_name: dagster-postgres
       port: 5432
 
 event_log_storage:
@@ -14,10 +14,10 @@ event_log_storage:
   class: PostgresEventLogStorage
   config:
     postgres_db:
-      username: aero-dagster-postgres
-      password: aero-dagster-postgres
-      hostname: aero-dagster-postgres
-      db_name: aero-dagster-postgres
+      username: dagster-postgres
+      password: dagster-postgres
+      hostname: dagster-postgres
+      db_name: dagster-postgres
       port: 5432
 
 schedule_storage:
@@ -25,10 +25,10 @@ schedule_storage:
   class: PostgresScheduleStorage
   config:
     postgres_db:
-      username: aero-dagster-postgres
-      password: aero-dagster-postgres
-      hostname: aero-dagster-postgres
-      db_name: aero-dagster-postgres
+      username: dagster-postgres
+      password: dagster-postgres
+      hostname: dagster-postgres
+      db_name: dagster-postgres
       port: 5432
 
 run_coordinator:

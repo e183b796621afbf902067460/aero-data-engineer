@@ -38,18 +38,18 @@ services:
     image: postgres:13
     environment:
       POSTGRES_HOST: 0.0.0.0
-      POSTGRES_USER: aero-dagster-postgres
-      POSTGRES_PASSWORD: aero-dagster-postgres
-      POSTGRES_DB: aero-dagster-postgres
+      POSTGRES_USER: dagster-postgres
+      POSTGRES_PASSWORD: dagster-postgres
+      POSTGRES_DB: dagster-postgres
     healthcheck:
-      test: [ "CMD", "pg_isready", "-U", "aero-dagster-postgres" ]
+      test: [ "CMD", "pg_isready", "-U", "dagster-postgres" ]
       interval: 5s
       retries: 5
     restart: always
     ports:
       - '5433:5432'
     volumes:
-      - ./aero-dagster-postgres:/var/lib/postgresql/data
+      - ./dagster-postgres:/var/lib/postgresql/data
     networks:
       - aero_network
 
