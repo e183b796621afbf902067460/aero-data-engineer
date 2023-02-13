@@ -1,156 +1,72 @@
-# DeFi Bachelor Thesis
-Depends on: [defi-head-core](https://github.com/e183b796621afbf902067460/defi-head-core), [defi-web3](https://github.com/e183b796621afbf902067460/defi-web3), [defi-traders-composite](https://github.com/e183b796621afbf902067460/defi-traders-composite), [defi-providers-fabric](https://github.com/e183b796621afbf902067460/defi-providers-fabric) and [defi-overviews-fabric](https://github.com/e183b796621afbf902067460/defi-overviews-fabric).
+# Aero Data Engineer
+Depends on: [framework](https://github.com/e183b796621afbf902067460/aero-data-engineer/tree/master/etl/framework).
 
 ---
 
+Microservices written on FastAPI helps to automate Data Vault management. ETL written on Dagster helps to schedule our tasks.
+
 # Configuration
 
-First of all to configure DeFi Management project correctly need to do next steps:
+First of all to configure the whole project correctly need to do next steps:
 
 - Clone current repository:
 ```
-git clone https://github.com/e183b796621afbf902067460/defi-bachelor-thesis.git
+https://github.com/e183b796621afbf902067460/aero-data-engineer.git
 ```
 
 - Get into the project folder:
 ```
-cd defi-bachelor-thesis/
+cd aero-data-engineer/
 ```
 
-- Create requirement folders:
-```
-mkdir defi-airflow/logs
-```
-
-- Put into `.env` permissions data:
-```
-echo -e "AIRFLOW_UID=$(id -u)\nAIRFLOW_GID=0" > defi-airflow/.env
-```
-
-- Set the __ENV__ variables in `docker-compose.yaml`:
-  
-  - Providers environment variables in [airflow-common-env](https://github.com/e183b796621afbf902067460/defi-bachelor-thesis/blob/master/docker-compose.yaml#L50) service, by default:
- 
-    ```
-    ETH_HTTP_PROVIDER: https://rpc.ankr.com/eth
-    BSC_HTTP_PROVIDER: https://rpc.ankr.com/bsc
-    AVAX_HTTP_PROVIDER: https://rpc.ankr.com/avalanche
-    ARB_HTTP_PROVIDER: https://rpc.ankr.com/arbitrum
-    FTM_HTTP_PROVIDER: https://rpc.ankr.com/fantom
-    MATIC_HTTP_PROVIDER: https://rpc.ankr.com/polygon
-    OPT_HTTP_PROVIDER: https://rpc.ankr.com/optimism
-    ```
-
-  - ClickHouse environment variables in [airflow-common-env](https://github.com/e183b796621afbf902067460/defi-bachelor-thesis/blob/master/docker-compose.yaml#L50) service, by default:
-    ```
-    CLICKHOUSE_HOST: clickhouse
-    CLICKHOUSE_DB: defi_management
-    CLICKHOUSE_USER: defi_management
-    CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT: 1
-    CLICKHOUSE_PASSWORD: defi_management
-    ```
-  - PostgreSQL environment variables in [airflow-common-env](https://github.com/e183b796621afbf902067460/defi-bachelor-thesis/blob/master/docker-compose.yaml#L50) service, by default:
-    ```
-    POSTGRES_HOST: orm
-    POSTGRES_USER: defi_management
-    POSTGRES_PASSWORD: defi_management
-    POSTGRES_DB: defi_management
-    ```
-  - PostgreSQL connection ID in [airflow-common-env](https://github.com/e183b796621afbf902067460/defi-bachelor-thesis/blob/master/docker-compose.yaml#L50) service, by default:
-    ```
-    AIRFLOW_CONN_POSTGRES_DEFI_MANAGEMENT: postgresql://defi_management:defi_management@orm/defi_management
-    ```
-  - Back-end environment variables in [fastapi](https://github.com/e183b796621afbf902067460/defi-bachelor-thesis/blob/master/docker-compose.yaml#L117) service, by default:
-    ```
-    SERVER_HOST: 0.0.0.0
-    SERVER_PORT: 8000
-    ```
-  - Front-end environment variables in [fastapi](https://github.com/e183b796621afbf902067460/defi-bachelor-thesis/blob/master/docker-compose.yaml#L117) service, by default:
-    ```
-    REACT_HOST: frontend
-    REACT_PORT: 3000
-    ```
-  - Back-end environment variables in [react](https://github.com/e183b796621afbf902067460/defi-bachelor-thesis/blob/master/docker-compose.yaml#L103) service, by default:
-    ```
-    FASTAPI_HOST: fastapi
-    FASTAPI_PORT: 8000
-    ```
-  - Set CORS in [settings.py](https://github.com/e183b796621afbf902067460/defi-bachelor-thesis/blob/master/defi-fastapi/src/cfg/settings.py) to allow [frontend](https://github.com/e183b796621afbf902067460/defi-bachelor-thesis/tree/master/defi-react), by default:
-    ```python
-    BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = [
-        f"http://0.0.0.0:3000"
-    ]
-    ```
-  - Set CORS in [axios.js](https://github.com/e183b796621afbf902067460/defi-bachelor-thesis/blob/master/defi-react/src/services/axios.js) to allow [backend](https://github.com/e183b796621afbf902067460/defi-bachelor-thesis/tree/master/defi-fastapi), by default:
-    ```js
-    const baseURL = "http://0.0.0.0:8000/api/v1/";
-    ```
-
+- Check environment variables in [.env](https://github.com/e183b796621afbf902067460/aero-data-engineer/blob/master/etl/.env) whether to change default values.
 
 # Docker
 
-- Run docker commands (`sudo`):
+- Run docker compose (`sudo`):
 ```
-docker build -t defi_airflow defi-airflow/
-```
-
-- Compose `airflow-init`:
-```
-docker-compose up airflow-init
+docker-compose up -d --build
 ```
 
-- Run docker compose:
-```
-docker-compose up -d
-```
-
-# Services
-
-`Apache Airflow` at [http://0.0.0.0:8080](http://0.0.0.0:8080), by default:
-  
- - Username
-```
-airflow
-```
-- Password
-```
-airflow
-```
- 
-`FastAPI` at [http://0.0.0.0:8000/docs](http://0.0.0.0:8000/docs).
-
-`ReactJS` at [http://0.0.0.0:3000](http://0.0.0.0:3000).
-
-# Fixtures
-
-Additional fixtures can be added to check project's success rate.
-
-- See existing containers:
+- Check each container's ID and copy them:
 ```
 docker ps
 ```
 
-- Copy `fastapi's` \<CONTAINER ID> and run inside of it:
+- Create Clickhouse schema:
 ```
-docker exec -it <CONTAINER ID> pytest _fixtures/conftest.py
+docker exec -it <clickhouse-service ID> python3 app/orm/scripts/create.py
 ```
 
-__To__ __authorize__ __at__ __[FastAPI](http://0.0.0.0:8000/docs)__ __or__ __[ReactJS](http://0.0.0.0:3000)__, __by__ __default__:
+- Setup alembic for PostgreSQL schema:
+```
+sudo docker exec -it <postgres-service ID> bash -c 'cd app/orm; alembic upgrade head'
+```
 
-- Username
+- And add additional data to Data Vault:
 ```
-defi_management
+sudo docker exec -it <postgres-service ID> python3 app/views/__init__.py
 ```
-- Password
+
+---
+
+After need to go to [launchpad](http://localhost:3000/locations/definitions.py%3Apit_users/jobs/pit_users/playground) for pit_users's DAG and click-on Launch Run on the lower right corner. 
+
+
+So, after DAG's ran need to do next steps to see where our data are stored:
 ```
-defi_management
+sudo docker exec -it <clickhouse ID> clickhouse-client
 ```
-- Chains
-`ETH`, `BSC`, `FTM`, `AVAX`.
-- Protocols
-`Aave`, `Curve`, `UniSwap`, `SushiSwap`, `PancakeSwap`, `Convex`, `Geist`, `Nereus`, `Ellipsis`,  `Sturdy`.
-- Yields
-`Lending`, `Staking`, `Farming`, `DEX`.
+
+Set needed database:
+```
+use clickhouse;
+```
+
+And make basic query:
+```
+select * from pit_users;
+```
 
 # Exit
 - To stop all running containers:
