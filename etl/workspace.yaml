@@ -1,0 +1,4 @@
+load_from:
+  - python_file:
+      relative_path: aero/definitions/pit_users/definitions.py
+      attribute: pit_users
