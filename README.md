@@ -50,7 +50,7 @@ sudo docker exec -it <postgres-service ID> python3 app/views/__init__.py
 
 ---
 
-After need to go to [launchpad](http://localhost:3000/locations/definitions.py%3Apit_users/jobs/pit_users/playground) for pit_users's DAG and click-on Launch Run on the lower right corner. 
+After need to go to [launchpad](http://localhost:3000/locations/definitions.py%3Apit_users/jobs/pit_users/playground) and click-on Launch Run on the lower right corner. 
 
 
 So, after DAG's ran need to do next steps to see where our data are stored:
