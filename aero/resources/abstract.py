@@ -8,7 +8,7 @@ from typing import final
 class iResource(ABC):
 
     DB_ADDRESS: str = None
-    DB_PORT: str = None
+    DB_PORT: int = None
     DB_USER: str = None
     DB_PASSWORD: str = None
     DB_NAME: str = None
