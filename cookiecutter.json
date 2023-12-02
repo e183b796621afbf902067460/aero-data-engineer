@@ -1,0 +1,5 @@
+{
+  "blockchain": "etherscan.io",
+  "address": "0x...",
+  "project": "streaming-service-{{cookiecutter.blockchain.lower()}}-{{cookiecutter.address.lower()}}"
+}
