@@ -23,7 +23,7 @@ class Settings(BaseSettings):
     KAFKA_BROKER_URL: str
     KAFKA_BROKER_PORT: int
 
-    WSS_PROVIDER: str
+    WSS_NODE_PROVIDER: str
 
     class Config:
         env_file = ".env"
