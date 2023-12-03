@@ -5,7 +5,7 @@ from aiokafka import AIOKafkaProducer
 from app.settings import settings
 
 
-class AIOKafkaProducerConnector(AIOKafkaProducer):
+class AIOKafkaProducerConnection(AIOKafkaProducer):
 
     def __init__(self, *args, **kwargs):
         AIOKafkaProducer.__init__(

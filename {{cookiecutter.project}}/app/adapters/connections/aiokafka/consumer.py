@@ -5,7 +5,7 @@ from aiokafka import AIOKafkaConsumer
 from app.settings import settings
 
 
-class AIOKafkaConsumerConnector(AIOKafkaConsumer):
+class AIOKafkaConsumerConnection(AIOKafkaConsumer):
 
     def __init__(self, *args, **kwargs):
         AIOKafkaConsumer.__init__(
