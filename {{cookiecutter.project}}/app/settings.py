@@ -4,6 +4,8 @@ import os
 from dotenv import load_dotenv
 from pydantic import BaseSettings
 
+from app.utils import initialize_class
+
 
 load_dotenv()
 
@@ -27,4 +29,4 @@ class Settings(BaseSettings):
         env_file = ".env"
 
 
-settings = Settings()  # type: ignore
+settings = initialize_class(Settings)  # type: ignore
