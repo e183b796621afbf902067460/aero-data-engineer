@@ -19,4 +19,4 @@ RUN pip3 install poetry~=1.7.1
 RUN poetry export -f requirements.txt > ${requirements}  --without-hashes --without linters,typing,tests
 RUN pip3 install -r ${requirements}
 
-# TODO RUN pip3 install -e "git+https://github.com/e183b796621afbf902067460/raffaelo.git#egg=raffaelo_uniswap_v3&subdirectory=_modules/raffaelo-uniswap-v3/"
+# TODO RUN pip3 install git+https://github.com/e183b796621afbf902067460/raffaelo.git#egg=raffaelo
