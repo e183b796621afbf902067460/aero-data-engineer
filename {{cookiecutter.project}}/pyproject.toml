@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "{{cookiecutter.project}}"
 version = "0.0.1"
-description = "{{cookiecutter.app_description}}"
+description = "{{cookiecutter.description}}"
 authors = [
     "e183b796621afbf902067460 <606d18446a06fe9738fd@gmail.com>"
 ]
