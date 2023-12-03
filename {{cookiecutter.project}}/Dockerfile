@@ -15,7 +15,7 @@ COPY ./pyproject.toml /code/pyproject.toml
 COPY ./poetry.lock /code/poetry.lock
 COPY ./app /code/app
 
-RUN pip3 install poetry~=1.6.1
+RUN pip3 install poetry~=1.7.1
 RUN poetry export -f requirements.txt > ${requirements}  --without-hashes --without linters,typing,tests
 RUN pip3 install -r ${requirements}
 
