@@ -8,4 +8,3 @@ class WSSProviderConnection(WSSProvider):
 
     def __init__(self):
         WSSProvider.__init__(self, uri=settings.WSS_NODE_PROVIDER)
-
