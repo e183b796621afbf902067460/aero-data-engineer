@@ -17,6 +17,7 @@ requests = "~=2.31.0"
 httpx = "~=0.24.1"
 aiokafka = "~=0.8.1"
 fastkafka = "~=0.8.0"
+loguru = "^0.7.2"
 
 [tool.poetry.group.linters.dependencies]
 black = "~=23.7.0"
