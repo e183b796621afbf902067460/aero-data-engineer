@@ -4,10 +4,10 @@ import os
 from dotenv import load_dotenv
 from pydantic import BaseSettings
 
-from app.utils import initialize_class
+from app.utils import initialize_class, call_function
 
 
-load_dotenv()
+call_function(load_dotenv)
 
 
 class Settings(BaseSettings):
