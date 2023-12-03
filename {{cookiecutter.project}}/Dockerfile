@@ -10,7 +10,6 @@ ENV PYTHONUNBUFFERED=1
 ENV PIP_NO_CACHE_DIR=1
 
 COPY ./pyproject.toml /code/pyproject.toml
-COPY ./.default.env /code/.default.env
 COPY ./app /code/app
 
 RUN pip3 install poetry~=1.6.1
