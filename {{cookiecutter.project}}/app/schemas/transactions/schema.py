@@ -1,10 +1,10 @@
-import typing
+from typing import Iterable, List
 
 from pydantic import BaseModel
-from typing import Iterable
 
 
 class _TransactionSeries(BaseModel):
+    """_TransactionSeries represents a series of real-time transaction processing data."""
 
     q_real_time_tx_processing_blockchain: str
     q_real_time_tx_processing_address: str
@@ -18,12 +18,38 @@ class _TransactionSeries(BaseModel):
 
     @classmethod
     def from_iterable(cls, iterable: Iterable):
-        return cls(**{k: v for k, v in zip(cls.model_fields.keys(), iterable)})
+        """Create an instance of _TransactionSeries from an iterable object.
+
+        Args:
+        ----
+            iterable (Iterable): An iterable containing values corresponding
+                to the attributes of _TransactionSeries.
+
+        Returns:
+        -------
+            _TransactionSeries: An instance of _TransactionSeries.
+        """
+        return cls(**{key: value for key, value in zip(cls.model_fields.keys(), iterable)})
 
 
 class TransactionsBatch(BaseModel):
-    q_real_time_tx_processing_series: typing.List[_TransactionSeries]
+    """TransactionsBatch represents a batch of real-time transaction processing data."""
+
+    q_real_time_tx_processing_series: List[_TransactionSeries]
 
     @classmethod
     def from_iterable(cls, iterable: Iterable):
-        return cls(**{key: [_TransactionSeries.from_iterable(value) for value in iterable] for key in cls.model_fields.keys()})
+        """Create an instance of TransactionsBatch from an iterable.
+
+        Args:
+        ----
+            iterable (Iterable): An iterable containing values corresponding
+                to the attributes of TransactionsBatch.
+
+        Returns:
+        -------
+            TransactionsBatch: An instance of TransactionsBatch.
+        """
+        return cls(
+            **{key: [_TransactionSeries.from_iterable(value) for value in iterable] for key in cls.model_fields.keys()},
+        )
