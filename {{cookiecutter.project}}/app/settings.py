@@ -45,6 +45,7 @@ class Settings(BaseSettings):
     BOOTSTRAP_SERVERS: str
     KAFKA_BROKER_URL: str
     KAFKA_BROKER_PORT: int
+    TOPIC_NAME: str
 
     WSS_NODE_PROVIDER: Optional[str] = None
     HTTP_NODE_PROVIDER: Optional[str] = None
