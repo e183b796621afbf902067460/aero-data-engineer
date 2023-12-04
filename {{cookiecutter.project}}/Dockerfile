@@ -1,9 +1,7 @@
 FROM python:3.10-slim
 
 USER root
-RUN apt-get update && apt-get install -y git
-
-ARG requirements=/code/requirements.txt
+RUN apt-get update -y && apt-get install -y --no-install-recommends git && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /code
 
@@ -16,7 +14,6 @@ COPY ./poetry.lock /code/poetry.lock
 COPY ./app /code/app
 
 RUN pip3 install poetry~=1.7.1
-RUN poetry export -f requirements.txt > ${requirements}  --without-hashes --without linters,typing,tests
-RUN pip3 install -r ${requirements}
+RUN poetry install --no-root
 
 # TODO RUN pip3 install git+https://github.com/e183b796621afbf902067460/raffaelo.git#egg=raffaelo
