@@ -16,7 +16,7 @@ except ImportError:
 
 
 @log.catch(onerror=lambda _: sys.exit(1))
-async def broadcast() -> None:
+async def observer() -> None:
     """Asynchronously broadcasts transactions from a specified liquidity pool to ClickHouse via Kafka.
 
     This function initializes a Kafka producer connection using AIOKafkaProducerConnection,
