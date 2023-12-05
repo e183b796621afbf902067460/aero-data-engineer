@@ -1,5 +1,4 @@
 from abc import ABC
-from typing import Optional
 
 from app.adapters.connections.providers.http import HTTPProviderConnection
 from app.adapters.connections.providers.wss import WSSProviderConnection
@@ -17,4 +16,4 @@ class iRepository(ABC):
         This class is intended to be subclassed to create concrete repository interfaces.
     """
 
-    _provider: Optional[WSSProviderConnection | HTTPProviderConnection] = None
+    _provider: WSSProviderConnection | HTTPProviderConnection
