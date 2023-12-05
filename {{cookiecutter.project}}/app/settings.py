@@ -23,6 +23,7 @@ class Settings(BaseSettings):
         BOOTSTRAP_SERVERS (str): Kafka bootstrap servers for messaging.
         KAFKA_BROKER_URL (str): URL of the Kafka broker.
         KAFKA_BROKER_PORT (int): Port of the Kafka broker.
+        TOPIC_NAME (str): Topic name.
 
         WSS_NODE_PROVIDER (Optional[str]): WebSocket Secure (WSS) node provider URI.
         HTTP_NODE_PROVIDER (Optional[str]): HTTP node provider URI.
@@ -49,9 +50,6 @@ class Settings(BaseSettings):
 
     WSS_NODE_PROVIDER: Optional[str] = None
     HTTP_NODE_PROVIDER: Optional[str] = None
-
-    class Config:
-        env_file = ".env"
 
 
 settings = initialize_class(Settings)  # type: ignore
