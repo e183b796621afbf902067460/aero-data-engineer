@@ -10,6 +10,7 @@ class iRepository(ABC):
     Attributes:
     ----------
         _provider: Placeholder for a provider to connect to blockchain node.
+        _protocol: Placeholder for a particular DeFi protocol.
 
     Note:
     ----
@@ -17,3 +18,4 @@ class iRepository(ABC):
     """
 
     _provider: WSSProviderConnection | HTTPProviderConnection
+    _protocol: str

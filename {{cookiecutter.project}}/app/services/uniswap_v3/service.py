@@ -73,6 +73,7 @@ class UniSwapV3WSSService(iService):
         yield [
             (
                 blockchain,
+                self._repository._protocol,
                 self._repository._contract._address,
                 swap.args.recipient,
                 self._repository._token0_symbol,

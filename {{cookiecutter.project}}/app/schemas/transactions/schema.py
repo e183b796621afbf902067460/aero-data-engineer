@@ -7,6 +7,7 @@ class _TransactionSeries(BaseModel):
     """_TransactionSeries represents a series of real-time transaction processing data."""
 
     q_real_time_tx_processing_blockchain: str
+    q_real_time_tx_processing_protocol: str
     q_real_time_tx_processing_address: str
     q_real_time_tx_processing_swap_maker: str
     q_real_time_tx_processing_t0_symbol: str

@@ -15,6 +15,7 @@ class UniSwapV3WSSRepository(iRepository):
     Attributes:
     ----------
         _provider (Type): The connection provider type (WSSProviderConnection).
+        _protocol (str): Particular DeFi protocol of a contract.
         _contract (UniSwapV3PoolContract): An instance of UniSwapV3PoolContract for the specified address.
         _token0, _token1: Instances of ERC20 tokens representing the pair tokens.
         _token0_symbol, _token1_symbol: Symbols of the pair tokens.
@@ -33,6 +34,7 @@ class UniSwapV3WSSRepository(iRepository):
     """
 
     _provider = WSSProviderConnection
+    _protocol = "UniSwap V3"
 
     def __init__(self, address: str, is_reverse: bool) -> None:
         self._contract: UniSwapV3PoolContract = UniSwapV3PoolContract(
