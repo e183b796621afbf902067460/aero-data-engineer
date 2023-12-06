@@ -74,7 +74,7 @@ services:
     command: python3 app/__main__.py
     restart: always
     build:
-      context: ./{{cookiecutter.project}}
+      context: ./
       dockerfile: Dockerfile
     environment:
       WSS_NODE_PROVIDER:
