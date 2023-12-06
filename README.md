@@ -5,32 +5,44 @@ A cookiecutter-based template to quickly create a project for a streaming servic
 
 - Create particular repository and clone it:
 ```bash
-git clone https://github.com/e183b796621afbf902067460/streaming-service-etherscan.io-0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640.git
+git clone https://github.com/e183b796621afbf902067460/{{cookiecutter.project}}
 ```
 
-- Create `venv`:
+- Change directory to this particular one:
 ```bash
-python3 -m venv venv
-```
-
-- And activate it:
-```bash
-source venv/bin/activate
+cd {{cookiecutter.project}}
 ```
 
 # Quickstart
 
 - Install `pipx` because it is strongly recommended to use with `cookiecutter`:
 ```bash
-pip3 install pipx
+pip3 install pipx  # 1.3.3
 ```
 
 - Install `cookiecutter` using `pipx` previously installed:
 ```bash
-pipx install cookiecutter
+pipx install cookiecutter  # 2.5.0
 ```
 
 - Generate streaming project based on current template:
 ```bash
 pipx run cookiecutter gh:e183b796621afbf902067460/cookiecutter-streaming-template
+```
+
+# Update Files
+
+- Move `.gitignore` to the root of the project:
+```bash
+mv {{cookiecutter.project}}/.gitignore ./.gitignore
+```
+
+- Also move `_clickhouse/`:
+```bash
+mv {{cookiecutter.project}}/_clickhouse ./_clickhouse
+```
+
+- And `docker-compose.yaml`:
+```bash
+mv {{cookiecutter.project}}/docker-compose.yaml ./docker-compose.yaml
 ```
