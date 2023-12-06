@@ -10,7 +10,7 @@ class HTTPProviderConnection(HTTPProvider):
     Note:
     ----
         This class initializes the HTTPProvider with default values,
-        setting the URI to the value specified in the 'WSS_NODE_PROVIDER'
+        setting the URI to the value specified in the 'HTTP_NODE_PROVIDER'
         setting from the application settings.
     """
 
