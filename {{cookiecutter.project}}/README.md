@@ -19,7 +19,7 @@ pip3 install poetry  # 1.7.1
 
 - Change directory where `pyprject.toml` is located:
 ```bash
-cd {{cookiecutter.project}}
+cd {{cookiecutter.project}}/
 ```
 
 - And install project's dependencies:
