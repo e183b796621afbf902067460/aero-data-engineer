@@ -2,5 +2,6 @@
   "blockchain": "etherscan.io",
   "address": "0x...",
   "description": "Streaming Service — {{cookiecutter.blockchain.lower()}} ({{cookiecutter.address.lower()}})",
-  "project": "streaming-service-{{cookiecutter.blockchain.lower()}}-{{cookiecutter.address.lower()}}"
+  "project": "streaming-service-{{cookiecutter.blockchain.lower()}}-{{cookiecutter.address.lower()}}",
+  "username": "e183b796621afbf902067460"
 }
