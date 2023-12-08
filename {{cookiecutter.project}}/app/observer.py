@@ -10,7 +10,7 @@ from app.streaming import FastKafkaApp
 from app.utils import INFINITY, initialize_class
 
 try:
-    from app.services.uniswap_v3.service import UniSwapV3WSSService  # noqa: F401
+    from app.services.quickswap_v3.service import QuickSwapV3WSSService  # noqa: F401
 except ImportError:
     ...
 
@@ -22,7 +22,7 @@ async def observer() -> None:
     This function initializes a Kafka producer connection using AIOKafkaProducerConnection,
     and starts the connection. It then enters an infinite loop where it observes transactions
     from a specified liquidity pool using a service implementing the iService interface, such as
-    UniSwapV3WSSRepository.
+    QuickSwapV3WSSService.
 
     The function gathers asynchronous tasks for sending batches of transactions to ClickHouse
     via the initialized Kafka producer. The transactions are obtained from the observed events
@@ -33,7 +33,6 @@ async def observer() -> None:
     - SystemExit: Exits the program with code 1 in case of an error during logging.
 
     TODOs:
-    - Specify a particular liquidity pool reverse parameter based on the trading pair.
     - Implement using a particular service from app.services.
 
     Note:
@@ -42,7 +41,7 @@ async def observer() -> None:
       transactions.
     """
     # TODO Implement using particular service from app.services
-    service: iService = ...  # UniSwapV3WSSService(address=settings.ADDRESS, is_reverse=...)
+    service: iService = ...  # QuickSwapV3WSSService(address=settings.ADDRESS, is_reverse=...)
 
     kafka = initialize_class(AIOKafkaProducerConnection)
     await kafka.start()

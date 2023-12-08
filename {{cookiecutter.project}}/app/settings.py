@@ -52,4 +52,4 @@ class Settings(BaseSettings):
     HTTP_NODE_PROVIDER: Optional[str] = None
 
 
-settings = initialize_class(Settings)  # type: ignore
+settings = initialize_class(Settings)
