@@ -5,7 +5,7 @@ A cookiecutter template to quickly create a streaming service with standardized 
 
 - Create particular repository and clone it:
 ```bash
-git clone https://github.com/e183b796621afbf902067460/{{cookiecutter.project}}
+git clone https://github.com/{{cookiecutter.username}}/{{cookiecutter.project}}
 ```
 
 - Change directory to this particular one:
