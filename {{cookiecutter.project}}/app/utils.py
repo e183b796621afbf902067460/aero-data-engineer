@@ -31,6 +31,20 @@ def call_function(fn: Callable) -> Any:
     return fn()
 
 
+async def call_async_function(fn: Callable) -> Any:
+    """Call a provided asynchronous function and return its result.
+
+    Args:
+    ----
+        fn (Callable): The function to be called.
+
+    Returns:
+    -------
+        Any: The result of calling the provided function.
+    """
+    return await fn()
+
+
 def strtobool(value: str) -> int:
     """Convert a string representing a boolean value to an integer.
 
