@@ -10,7 +10,7 @@ from app.streaming import FastKafkaApp
 from app.utils import INFINITY, initialize_class
 
 try:
-    from app.adapters.repositories.uniswap_v3.repository import UniSwapV3WSSRepository  # noqa: F401
+    from app.services.uniswap_v3.service import UniSwapV3WSSService  # noqa: F401
 except ImportError:
     ...
 
@@ -42,9 +42,9 @@ async def observer() -> None:
       transactions.
     """
     # TODO Specify particular liquidity pool reverse parameter based on trading pair
-    is_reverse: bool = ...  # True of False
+    is_reverse: bool = ...  # noqa: F841
     # TODO Implement using particular service from app.services
-    service: iService = ...  # UniSwapV3WSSRepository(address=settings.ADDRESS, is_reverse=is_reverse)
+    service: iService = ...  # UniSwapV3WSSService(address=settings.ADDRESS, is_reverse=is_reverse)
 
     kafka = initialize_class(AIOKafkaProducerConnection)
     await kafka.start()
@@ -53,6 +53,6 @@ async def observer() -> None:
         await asyncio.gather(
             *(
                 FastKafkaApp.to_clickhouse(producer=kafka, events=TransactionsBatch.from_iterable(events))
-                for events in service.observe(blockchain=settings.BLOCKCHAIN, is_reverse=is_reverse)
+                for events in service.observe(blockchain=settings.BLOCKCHAIN)
             ),
         )

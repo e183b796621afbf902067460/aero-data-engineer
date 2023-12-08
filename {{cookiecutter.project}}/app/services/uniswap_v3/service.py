@@ -21,7 +21,7 @@ class UniSwapV3WSSService(iService):
 
     _repository = UniSwapV3WSSRepository
 
-    def _amount0(self, is_reverse: bool, swap: LogReceipt) -> float:
+    def _amount0(self, swap: LogReceipt) -> float:
         """Calculate the adjusted amount0 based on the provided swap, repository, and reverse flag.
 
         Args:
@@ -33,13 +33,13 @@ class UniSwapV3WSSService(iService):
         -------
         float: The calculated adjusted amount0.
         """
-        if not is_reverse:
+        if not self._is_reverse:
             amount0 = swap.args.amount0 / 10**self._repository._token0_decimals
         else:
             amount0 = swap.args.amount1 / 10**self._repository._token0_decimals
         return amount0
 
-    def _amount1(self, is_reverse: bool, swap: LogReceipt) -> float:
+    def _amount1(self, swap: LogReceipt) -> float:
         """Calculate the adjusted amount1 based on the provided swap, repository, and reverse flag.
 
         Args:
@@ -51,13 +51,13 @@ class UniSwapV3WSSService(iService):
         -------
         float: The calculated adjusted amount1.
         """
-        if not is_reverse:
+        if not self._is_reverse:
             amount1 = swap.args.amount1 / 10**self._repository._token1_decimals
         else:
             amount1 = swap.args.amount0 / 10**self._repository._token1_decimals
         return amount1
 
-    def observe(self, is_reverse: bool, blockchain: str, *args, **kwargs) -> List[Iterable]:
+    def observe(self, blockchain: str, *args, **kwargs) -> List[Iterable]:
         """Observes UniSwap V3 transactions and yields relevant information.
 
         Args:
@@ -78,8 +78,8 @@ class UniSwapV3WSSService(iService):
                 swap.args.recipient,
                 self._repository._token0_symbol,
                 self._repository._token1_symbol,
-                self._amount0(is_reverse=is_reverse, swap=swap),
-                self._amount1(is_reverse=is_reverse, swap=swap),
+                self._amount0(swap=swap),
+                self._amount1(swap=swap),
                 swap.transactionHash.hex(),
                 str(
                     datetime.datetime.fromtimestamp(

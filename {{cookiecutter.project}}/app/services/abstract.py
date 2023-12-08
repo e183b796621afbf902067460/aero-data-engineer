@@ -15,6 +15,10 @@ class iService(ABC):
 
     _repository: type
 
+    def __init__(self, address: str, is_reverse: bool) -> None:
+        self._is_reverse: bool = is_reverse
+        self._repository = self._repository(address=address, is_reverse=self._is_reverse)
+
     @abstractmethod
     def observe(self, *args, **kwargs):
         """An abstract method to be implemented by subclasses for observing data.
