@@ -41,10 +41,8 @@ async def observer() -> None:
     - The INFINITY constant is used to create an infinite loop for continuously observing
       transactions.
     """
-    # TODO Specify particular liquidity pool reverse parameter based on trading pair
-    is_reverse: bool = ...  # noqa: F841
     # TODO Implement using particular service from app.services
-    service: iService = ...  # UniSwapV3WSSService(address=settings.ADDRESS, is_reverse=is_reverse)
+    service: iService = ...  # UniSwapV3WSSService(address=settings.ADDRESS, is_reverse=...)
 
     kafka = initialize_class(AIOKafkaProducerConnection)
     await kafka.start()
