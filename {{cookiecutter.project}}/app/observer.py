@@ -7,7 +7,7 @@ from app.schemas.transactions.schema import TransactionsBatch
 from app.services.abstract import iService
 from app.settings import settings
 from app.streaming import FastKafkaApp
-from app.utils import INFINITY, initialize_class
+from app.utils import INFINITY
 
 try:
     from app.services.quickswap_v3.service import QuickSwapV3WSSService  # noqa: F401
@@ -43,7 +43,7 @@ async def observer() -> None:
     # TODO Implement using particular service from app.services
     service: iService = ...  # QuickSwapV3WSSService(address=settings.ADDRESS, is_reverse=...)
 
-    kafka = initialize_class(AIOKafkaProducerConnection)
+    kafka = AIOKafkaProducerConnection()
     await kafka.start()
 
     for _ in INFINITY:
