@@ -4,9 +4,9 @@ from typing import Optional
 from dotenv import load_dotenv
 from pydantic_settings import BaseSettings
 
-from app.utils import call_function, initialize_class, strtobool
+from app.utils import strtobool
 
-call_function(load_dotenv)
+load_dotenv()
 
 
 class Settings(BaseSettings):
@@ -43,13 +43,13 @@ class Settings(BaseSettings):
         strtobool(os.getenv("IS_DEVELOPMENT", "False")),
     )
 
-    BOOTSTRAP_SERVERS: str
-    KAFKA_BROKER_URL: str
-    KAFKA_BROKER_PORT: int
-    TOPIC_NAME: str
+    BOOTSTRAP_SERVERS: str = os.getenv("BOOTSTRAP_SERVERS", None)
+    KAFKA_BROKER_URL: str = os.getenv("KAFKA_BROKER_URL", None)
+    KAFKA_BROKER_PORT: int = os.getenv("KAFKA_BROKER_PORT", None)
+    TOPIC_NAME: str = os.getenv("TOPIC_NAME", None)
 
-    WSS_NODE_PROVIDER: Optional[str] = None
-    HTTP_NODE_PROVIDER: Optional[str] = None
+    WSS_NODE_PROVIDER: Optional[str] = os.getenv("WSS_NODE_PROVIDER", None)
+    HTTP_NODE_PROVIDER: Optional[str] = os.getenv("HTTP_NODE_PROVIDER", None)
 
 
-settings = initialize_class(Settings)
+settings = Settings()
