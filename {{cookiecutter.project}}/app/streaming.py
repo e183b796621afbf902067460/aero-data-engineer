@@ -5,7 +5,6 @@ from fastkafka import FastKafka
 from app.adapters.connections.kafka.producer import AIOKafkaProducerConnection
 from app.schemas.transactions.schema import TransactionsBatch
 from app.settings import settings
-from app.utils import initialize_class
 
 
 class FastKafkaApp(FastKafka):
@@ -57,4 +56,4 @@ class FastKafkaApp(FastKafka):
         ) if events.q_real_time_tx_processing_series else ...
 
 
-fastkafka_app = initialize_class(FastKafkaApp)
+fastkafka_app = FastKafkaApp()
