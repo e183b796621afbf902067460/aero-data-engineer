@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS clickhouse.q_real_time_tx_processing
 ENGINE = Kafka
 SETTINGS
     kafka_broker_list = 'kafka:9092',
-    kafka_topic_list = 'app.topic',
+    kafka_topic_list = 'topic',
     kafka_group_name = 'q_real_time_tx_processing_ch',
     kafka_format = 'JSONEachRow';
 
