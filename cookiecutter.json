@@ -1,6 +1,6 @@
 {
   "blockchain": "polygonscan.com",
-  "address": "0xae81fac689a1b4b1e06e7ef4a2ab4cd8ac0a087d",
+  "address": "0xAE81FAc689A1b4b1e06e7ef4a2ab4CD8aC0A087D",
   "description": "Streaming Service — {{cookiecutter.blockchain.lower()}} ({{cookiecutter.address.lower()}})",
   "project": "streaming-service-{{cookiecutter.blockchain.lower()}}-{{cookiecutter.address.lower()}}",
   "username": "e183b796621afbf902067460"
