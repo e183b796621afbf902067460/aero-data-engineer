@@ -5,7 +5,6 @@ from web3.middleware import geth_poa_middleware
 from app.adapters.connections.providers.http import HTTPProviderConnection
 from app.adapters.connections.providers.wss import WSSProviderConnection
 from app.adapters.repositories.abstract import iRepository
-from app.utils import initialize_class
 
 
 class QuickSwapV3WSSRepository(iRepository):
@@ -39,7 +38,7 @@ class QuickSwapV3WSSRepository(iRepository):
     def __init__(self, address: str, is_reverse: bool) -> None:
         self._contract: QuickSwapV3AlgebraPoolContract = QuickSwapV3AlgebraPoolContract(
             address=Web3.to_checksum_address(value=address),
-            provider=initialize_class(self._provider),
+            provider=self._provider(),
         )
 
         self._token0, self._token1 = (

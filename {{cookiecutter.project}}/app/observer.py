@@ -1,8 +1,8 @@
 import asyncio
 import sys
 
+from app.adapters.clients.logger.handler import log
 from app.adapters.connections.kafka.producer import AIOKafkaProducerConnection
-from app.adapters.connections.logger.handler import log
 from app.schemas.transactions.schema import TransactionsBatch
 from app.services.abstract import iService
 from app.settings import settings
