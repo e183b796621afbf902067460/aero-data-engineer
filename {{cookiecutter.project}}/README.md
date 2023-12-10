@@ -55,4 +55,4 @@ pre-commit install
 pre-commit run --all-files
 ```
 
-<p><small>Based on <a target="_blank" href="https://github.com/e183b796621afbf902067460/cookiecutter-streaming-template">cookiecutter-streaming-template</a>.</small></p>
+<p><small>Based on <a target="_blank" href="https://github.com/e183b796621afbf902067460/quickview-template">quickview-template</a>.</small></p>
