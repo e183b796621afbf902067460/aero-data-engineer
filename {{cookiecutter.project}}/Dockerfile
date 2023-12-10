@@ -14,7 +14,7 @@ COPY ./poetry.lock /code/poetry.lock
 COPY ./app /code/app
 
 RUN pip3 install poetry~=1.7.1
-RUN poetry install --no-root
+RUN poetry config virtualenvs.create false
+RUN poetry install --no-root --no-interaction --no-ansi
 
 RUN pip3 install -e "git+https://github.com/e183b796621afbf902067460/raffaelo.git#egg=raffaelo_quickswap_v3&subdirectory=_modules/raffaelo-quickswap-v3/" --config-settings editable_mode=strict
-RUN pip3 install -e "git+https://github.com/e183b796621afbf902067460/raffaelo.git#egg=raffaelo_uniswap_v3&subdirectory=_modules/raffaelo-uniswap-v3/" --config-settings editable_mode=strict
