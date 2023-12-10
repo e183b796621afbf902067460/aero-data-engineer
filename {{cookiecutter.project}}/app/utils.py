@@ -1,48 +1,4 @@
-from typing import Any, Callable
-
 INFINITY = iter(int, 1)
-
-
-def initialize_class(cls: type) -> object:
-    """Initialize a class by creating an instance with default constructor.
-
-    Args:
-    ----
-        cls (Type): The class to be initialized.
-
-    Returns:
-    -------
-        object: An instance of the provided class.
-    """
-    return cls()
-
-
-def call_function(fn: Callable) -> Any:
-    """Call a provided function and return its result.
-
-    Args:
-    ----
-        fn (Callable): The function to be called.
-
-    Returns:
-    -------
-        Any: The result of calling the provided function.
-    """
-    return fn()
-
-
-async def call_async_function(fn: Callable) -> Any:
-    """Call a provided asynchronous function and return its result.
-
-    Args:
-    ----
-        fn (Callable): The function to be called.
-
-    Returns:
-    -------
-        Any: The result of calling the provided function.
-    """
-    return await fn()
 
 
 def strtobool(value: str) -> int:
