@@ -43,10 +43,10 @@ class Settings(BaseSettings):
         strtobool(os.getenv("IS_DEVELOPMENT", "False")),
     )
 
-    BOOTSTRAP_SERVERS: str = os.getenv("BOOTSTRAP_SERVERS", None)
-    KAFKA_BROKER_URL: str = os.getenv("KAFKA_BROKER_URL", None)
-    KAFKA_BROKER_PORT: int = os.getenv("KAFKA_BROKER_PORT", None)
-    TOPIC_NAME: str = os.getenv("TOPIC_NAME", None)
+    BOOTSTRAP_SERVERS: Optional[str] = os.getenv("BOOTSTRAP_SERVERS", None)
+    KAFKA_BROKER_URL: Optional[str] = os.getenv("KAFKA_BROKER_URL", None)
+    KAFKA_BROKER_PORT: Optional[int] = os.getenv("KAFKA_BROKER_PORT", None)
+    TOPIC_NAME: Optional[str] = os.getenv("TOPIC_NAME", None)
 
     WSS_NODE_PROVIDER: Optional[str] = os.getenv("WSS_NODE_PROVIDER", None)
 
