@@ -11,6 +11,8 @@ from app.utils import INFINITY
 # TODO import particular service
 try:
     from app.services.abstract import iService
+
+    raise ImportError
 except ImportError:
     ...
 
