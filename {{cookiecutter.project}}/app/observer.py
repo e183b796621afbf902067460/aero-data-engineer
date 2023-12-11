@@ -10,7 +10,7 @@ from app.utils import INFINITY
 
 # TODO import particular service
 try:
-    from app.services.abstract import iService
+    from app.services.abstract import iService  # noqa: F401
 
     raise ImportError
 except ImportError:

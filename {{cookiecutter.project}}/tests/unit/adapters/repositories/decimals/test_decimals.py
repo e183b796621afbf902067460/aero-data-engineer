@@ -2,7 +2,7 @@ import pytest
 
 # TODO import particular repository
 try:
-    from app.adapters.repositories.abstract import iRepository
+    from app.adapters.repositories.abstract import iRepository  # noqa: F401
 
     raise ImportError
 except ImportError:

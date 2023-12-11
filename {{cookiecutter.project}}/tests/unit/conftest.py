@@ -4,8 +4,8 @@ from app.settings import settings
 
 # TODO import particular service and repository
 try:
-    from app.adapters.repositories.abstract import iRepository
-    from app.services.abstract import iService
+    from app.adapters.repositories.abstract import iRepository  # noqa: F401
+    from app.services.abstract import iService  # noqa: F401
 
     raise ImportError
 except ImportError:
