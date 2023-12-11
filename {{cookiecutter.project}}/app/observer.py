@@ -5,7 +5,7 @@ from app.adapters.clients.logger.handler import log
 from app.adapters.connections.kafka.producer import AIOKafkaProducerConnection
 from app.schemas.transactions.schema import TransactionsBatch
 from app.settings import settings
-from app.streaming import FastKafkaApp
+from app.streaming import fastkafka_app
 from app.utils import INFINITY
 
 # TODO import particular service
@@ -51,7 +51,7 @@ async def observer() -> None:
     for _ in INFINITY:
         await asyncio.gather(
             *(
-                FastKafkaApp.to_clickhouse(producer=kafka, events=TransactionsBatch.from_iterable(events))
+                fastkafka_app.to_clickhouse(producer=kafka, events=TransactionsBatch.from_iterable(events))
                 for events in service.observe(blockchain=settings.BLOCKCHAIN)
             ),
         )
