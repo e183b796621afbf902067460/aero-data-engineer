@@ -49,7 +49,6 @@ class Settings(BaseSettings):
     TOPIC_NAME: str = os.getenv("TOPIC_NAME", None)
 
     WSS_NODE_PROVIDER: Optional[str] = os.getenv("WSS_NODE_PROVIDER", None)
-    HTTP_NODE_PROVIDER: Optional[str] = os.getenv("HTTP_NODE_PROVIDER", None)
 
 
 settings = Settings()
