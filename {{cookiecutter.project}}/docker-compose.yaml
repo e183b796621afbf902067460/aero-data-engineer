@@ -78,7 +78,6 @@ services:
       dockerfile: Dockerfile
     environment:
       WSS_NODE_PROVIDER:
-      HTTP_NODE_PROVIDER:
 
       BOOTSTRAP_SERVERS: kafka:9092
       KAFKA_BROKER_URL: kafka
