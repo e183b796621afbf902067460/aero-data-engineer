@@ -1,4 +1,4 @@
-# cookiecutter-quickview-template
+# quickview-template
 A cookiecutter template to quickly create a streaming service with standardized project structure.
 
 # Before Quickstart
