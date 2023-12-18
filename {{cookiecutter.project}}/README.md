@@ -55,8 +55,6 @@ pre-commit install
 pre-commit run --all-files
 ```
 
-<p><small>Based on <a target="_blank" href="https://github.com/e183b796621afbf902067460/quickview-template">quickview-template</a>.</small></p>
-
 # Deploy
 
 - Run all in docker, perhaps using `sudo`:
@@ -70,3 +68,5 @@ docker-compose up -d --build --force-recreate
 ```bash
 docker-compose down
 ```
+
+<p><small>Based on <a target="_blank" href="https://github.com/e183b796621afbf902067460/quickview-template">quickview-template</a>.</small></p>
