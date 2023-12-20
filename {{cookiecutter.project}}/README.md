@@ -55,4 +55,18 @@ pre-commit install
 pre-commit run --all-files
 ```
 
+# Deploy
+
+- Run all in docker, perhaps using `sudo`:
+```bash
+docker-compose up -d --build --force-recreate
+```
+
+- Check [`KafkaUI`](http://0.0.0.0:8080/) and `ClickHouse` streaming data.
+
+- Stop all services:
+```bash
+docker-compose down
+```
+
 <p><small>Based on <a target="_blank" href="https://github.com/e183b796621afbf902067460/quickview-template">quickview-template</a>.</small></p>
