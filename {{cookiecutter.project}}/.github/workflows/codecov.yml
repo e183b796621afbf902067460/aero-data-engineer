@@ -20,6 +20,9 @@ jobs:
         with:
           python-version: 3.x
 
+      - name: Install poetry
+        run: pip3 install poetry
+
       - name: Change directory
         run: cd {{cookiecutter.project}}/
 
