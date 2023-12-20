@@ -24,9 +24,6 @@ jobs:
       - name: Install poetry
         run: pip3 install poetry
 
-      - name: Change directory
-        run: cd \{\{cookiecutter.project\}\}/
-
       - name: Install dependencies
         run: poetry install --no-root
 
