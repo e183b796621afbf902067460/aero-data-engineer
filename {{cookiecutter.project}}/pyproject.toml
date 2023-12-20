@@ -88,5 +88,5 @@ include_trailing_comma = true
 
 [tool.pytest.ini_options]
 markers = [
-    "repositories: marks tests from adapters/repositories",
+    "unit: marks unit-tests",
 ]
