@@ -1,6 +1,7 @@
 name: CI-pipeline to test {{cookiecutter.project}}
 
 on:
+
   pull_request:
     types: [opened, reopened, synchronize, edited]
     branches:
