@@ -1,0 +1,4 @@
+# This is a sample CODEOWNERS file
+
+# Default owner for everything in the repository
+*   @{{cookiecutter.username}}

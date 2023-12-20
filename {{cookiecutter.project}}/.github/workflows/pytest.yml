@@ -1,0 +1,55 @@
+name: CI-pipeline to test {{cookiecutter.project}}
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, edited]
+    branches:
+      - master
+      - dev
+
+jobs:
+
+  pre-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Change directory
+        run: cd {{cookiecutter.project}}/
+
+      - name: Install dependencies
+        run: poetry install --no-root
+
+      - name: Pre-commit run
+        run: pre-commit run --all-files
+
+  pytest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Change directory
+        run: cd {{cookiecutter.project}}/
+
+      - name: Install dependencies
+        run: poetry install --no-root
+
+      - name: Install raffaelo-quickswap-v3
+        run: pip3 install -e "git+https://github.com/e183b796621afbf902067460/raffaelo.git#egg=raffaelo_quickswap_v3&subdirectory=_modules/raffaelo-quickswap-v3/" --config-settings editable_mode=strict
+
+      - name: Pytest run
+        run: pytest tests/

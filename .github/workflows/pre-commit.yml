@@ -2,7 +2,7 @@ name: CI-pipeline for quickview-template
 
 on:
   pull_request:
-    types: [opened, synchronize, edited]
+    types: [opened, reopened, synchronize, edited]
     branches:
       - master
       - dev
