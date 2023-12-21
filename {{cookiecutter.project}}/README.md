@@ -1,4 +1,8 @@
 # {{cookiecutter.project}}
+
+[![license](https://img.shields.io/:license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0.txt)
+[![code-style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
 A cookiecutter-based project to stream data from [liquidity pool](https://{{cookiecutter.blockchain}}/address/{{cookiecutter.address}}).
 
 # Quickstart
