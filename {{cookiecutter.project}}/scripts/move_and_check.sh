@@ -40,6 +40,9 @@ move_and_check "./{{cookiecutter.project}}/docker-compose.yaml" "$(pwd)/"
 # Move Dockerfile to $(pwd)
 move_and_check "./{{cookiecutter.project}}/Dockerfile" "$(pwd)/"
 
+# Move LICENSE to $(pwd)
+move_and_check "./{{cookiecutter.project}}/LICENSE" "$(pwd)/"
+
 # Move poetry.lock to $(pwd)
 move_and_check "./{{cookiecutter.project}}/poetry.lock" "$(pwd)/"
 
