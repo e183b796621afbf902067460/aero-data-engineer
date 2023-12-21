@@ -32,7 +32,7 @@ pipx run cookiecutter gh:e183b796621afbf902067460/cookiecutter-streaming-templat
 
 # Update Files
 
-- Move `README.md`, `docker-compose.yaml`, `.gitignore` and `.pre-commit-config.yaml` to the root of the project:
+- Move project's files to the root:
 ```bash
 bash {{cookiecutter.project}}/scripts/move_and_check.sh
 ```
