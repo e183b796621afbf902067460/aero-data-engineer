@@ -25,9 +25,6 @@ jobs:
       - name: Install poetry
         run: pip3 install poetry
 
-      - name: Change directory
-        run: cd {{cookiecutter.project}}/
-
       - name: Install dependencies
         run: poetry config virtualenvs.create false && poetry install --no-root --no-interaction --no-ansi
 
