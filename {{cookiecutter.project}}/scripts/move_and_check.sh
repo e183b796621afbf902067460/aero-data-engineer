@@ -19,11 +19,11 @@ move_and_check() {
 # Move .github to $(pwd)
 move_and_check "./{{cookiecutter.project}}/.github" "$(pwd)/"
 
-# Move _clickhouse to $(pwd)
-move_and_check "./{{cookiecutter.project}}/_clickhouse" "$(pwd)/"
-
 # Move app to $(pwd)
 move_and_check "./{{cookiecutter.project}}/app" "$(pwd)/"
+
+# Move images to $(pwd)
+move_and_check "./{{cookiecutter.project}}/images" "$(pwd)/"
 
 # Move tests to $(pwd)
 move_and_check "./{{cookiecutter.project}}/tests" "$(pwd)/"
