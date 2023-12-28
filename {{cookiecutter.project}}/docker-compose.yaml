@@ -10,7 +10,7 @@ services:
       ZOOKEEPER_CLIENT_PORT: 2182
       ZOOKEEPER_TICK_TIME: 2000
     networks:
-      - app-network
+      - {{cookiecutter.project}}-tier
 
   kafka:
     image: wurstmeister/kafka:2.13-2.7.0
@@ -33,7 +33,7 @@ services:
     depends_on:
       - zookeeper
     networks:
-      - app-network
+      - {{cookiecutter.project}}-tier
 
   kafka-ui:
     image: provectuslabs/kafka-ui:latest
@@ -47,18 +47,22 @@ services:
       kafka:
         condition: service_healthy
     networks:
-      - app-network
+      - {{cookiecutter.project}}-tier
 
   clickhouse:
-    image: clickhouse/clickhouse-server:23.1-alpine
+    build:
+      context: ./images/clickhouse
+      dockerfile: Dockerfile
+      args:
+        - KAFKA_BROKER_LIST=kafka:9092
+        - KAFKA_TOPIC_LIST=topic
+        - KAFKA_GROUP_NAME=q_real_time_tx_processing_ch
     environment:
       CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT: 1
       CLICKHOUSE_HOST: 0.0.0.0
       CLICKHOUSE_DB: clickhouse
       CLICKHOUSE_USER: clickhouse
       CLICKHOUSE_PASSWORD: clickhouse
-    volumes:
-      - ./_clickhouse/docker-entrypoint-initdb.sql:/docker-entrypoint-initdb.d/docker-entrypoint-initdb.sql
     ports:
       - '8123:8123'
     healthcheck:
@@ -68,7 +72,7 @@ services:
       kafka:
         condition: service_healthy
     networks:
-      - app-network
+      - {{cookiecutter.project}}-tier
 
   app:
     command: python3 app/__main__.py
@@ -87,7 +91,7 @@ services:
       clickhouse:
         condition: service_healthy
     networks:
-      - app-network
+      - {{cookiecutter.project}}-tier
 
 networks:
-  app-network:
+  {{cookiecutter.project}}-tier:
