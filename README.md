@@ -27,7 +27,7 @@ pipx install cookiecutter  # 2.5.0
 
 - Generate streaming project based on current template:
 ```bash
-pipx run cookiecutter gh:e183b796621afbf902067460/cookiecutter-streaming-template
+pipx run cookiecutter gh:e183b796621afbf902067460/quickview-template
 ```
 
 # Update Files
