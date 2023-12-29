@@ -59,6 +59,19 @@ pre-commit install
 pre-commit run --all-files
 ```
 
+# Configuration
+
+### Kafka environment variables
+
+- `BOOTSTRAP_SERVERS`: Kafka application bootstrap servers.
+- `KAFKA_BROKER_URL`: Kafka application broker URL.
+- `KAFKA_BROKER_PORT`: Kafka application broker port.
+- `TOPIC_NAME`: Kafka application topic name.
+
+### Node environment variables
+
+- `WSS_NODE_PROVIDER`: WebSocket node provider.
+
 # Deploy
 
 - Run all in docker, perhaps using `sudo`:
