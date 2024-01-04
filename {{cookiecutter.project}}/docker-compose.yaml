@@ -60,8 +60,6 @@ services:
     environment:
       CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT: 1
       CLICKHOUSE_HOST: 0.0.0.0
-      CLICKHOUSE_DB: clickhouse
-      CLICKHOUSE_USER: clickhouse
       CLICKHOUSE_PASSWORD: clickhouse
     ports:
       - '8123:8123'
