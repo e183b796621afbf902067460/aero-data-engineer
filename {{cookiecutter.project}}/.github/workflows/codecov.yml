@@ -1,4 +1,4 @@
-name: CI-pipeline to coverage {{cookiecutter.project}}
+name: CI-pipeline to coverage application
 
 on:
 

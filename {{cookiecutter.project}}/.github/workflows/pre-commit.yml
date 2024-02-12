@@ -1,4 +1,4 @@
-name: CI-pipeline to pre-commit {{cookiecutter.project}}
+name: CI-pipeline to pre-commit application
 
 on:
 
