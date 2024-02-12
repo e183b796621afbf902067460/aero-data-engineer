@@ -34,7 +34,7 @@ pipx run cookiecutter gh:e183b796621afbf902067460/quickview-template
 
 - Move project's files to the root:
 ```bash
-bash {{cookiecutter.project}}/scripts/move_and_check.sh
+bash {{cookiecutter.project}}/scripts/standardize.sh
 ```
 
 # Push

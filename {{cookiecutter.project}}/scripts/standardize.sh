@@ -3,7 +3,7 @@
 echo "Moving core files to project's root $(pwd)/."
 
 # Function to move and check
-move_and_check() {
+standardize() {
     src="$1"
     dest="$2"
 
@@ -17,40 +17,40 @@ move_and_check() {
 }
 
 # Move .github to $(pwd)
-move_and_check "./{{cookiecutter.project}}/.github" "$(pwd)/"
+standardize "./{{cookiecutter.project}}/.github" "$(pwd)/"
 
 # Move app to $(pwd)
-move_and_check "./{{cookiecutter.project}}/app" "$(pwd)/"
+standardize "./{{cookiecutter.project}}/app" "$(pwd)/"
 
 # Move images to $(pwd)
-move_and_check "./{{cookiecutter.project}}/images" "$(pwd)/"
+standardize "./{{cookiecutter.project}}/images" "$(pwd)/"
 
 # Move tests to $(pwd)
-move_and_check "./{{cookiecutter.project}}/tests" "$(pwd)/"
+standardize "./{{cookiecutter.project}}/tests" "$(pwd)/"
 
 # Move .gitignore to $(pwd)
-move_and_check "./{{cookiecutter.project}}/.gitignore" "$(pwd)/"
+standardize "./{{cookiecutter.project}}/.gitignore" "$(pwd)/"
 
 # Move .pre-commit-config.yaml to $(pwd)
-move_and_check "./{{cookiecutter.project}}/.pre-commit-config.yaml" "$(pwd)/"
+standardize "./{{cookiecutter.project}}/.pre-commit-config.yaml" "$(pwd)/"
 
 # Move docker-compose.yaml to $(pwd)
-move_and_check "./{{cookiecutter.project}}/docker-compose.yaml" "$(pwd)/"
+standardize "./{{cookiecutter.project}}/docker-compose.yaml" "$(pwd)/"
 
 # Move Dockerfile to $(pwd)
-move_and_check "./{{cookiecutter.project}}/Dockerfile" "$(pwd)/"
+standardize "./{{cookiecutter.project}}/Dockerfile" "$(pwd)/"
 
 # Move LICENSE to $(pwd)
-move_and_check "./{{cookiecutter.project}}/LICENSE" "$(pwd)/"
+standardize "./{{cookiecutter.project}}/LICENSE" "$(pwd)/"
 
 # Move poetry.lock to $(pwd)
-move_and_check "./{{cookiecutter.project}}/poetry.lock" "$(pwd)/"
+standardize "./{{cookiecutter.project}}/poetry.lock" "$(pwd)/"
 
 # Move pyproject.toml to $(pwd)
-move_and_check "./{{cookiecutter.project}}/pyproject.toml" "$(pwd)/"
+standardize "./{{cookiecutter.project}}/pyproject.toml" "$(pwd)/"
 
 # Move README.md to $(pwd)
-move_and_check "./{{cookiecutter.project}}/README.md" "$(pwd)/"
+standardize "./{{cookiecutter.project}}/README.md" "$(pwd)/"
 
 # Remove {{cookiecutter.project}} directory
 echo "Removing {{cookiecutter.project}} directory..."
