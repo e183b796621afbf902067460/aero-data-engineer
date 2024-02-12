@@ -35,11 +35,6 @@ Moving to poetry has helped to have `pyproject.toml` as a single configuration f
 pip3 install poetry  # 1.7.1
 ```
 
-- Change directory where `pyprject.toml` is located:
-```bash
-cd {{cookiecutter.project}}/
-```
-
 - And install project's dependencies:
 ```bash
 poetry install --no-root
