@@ -4,8 +4,6 @@ from typing import Optional
 from dotenv import load_dotenv
 from pydantic_settings import BaseSettings
 
-from app.utils import strtobool
-
 load_dotenv()
 
 
@@ -34,7 +32,7 @@ class _Settings(BaseSettings):
     APP_NAME: str = "{{cookiecutter.project}}"
     BLOCKCHAIN: str = "{{cookiecutter.blockchain}}"
     ADDRESS: str = "{{cookiecutter.address}}"
-    IS_REVERSE: bool = strtobool("{{cookiecutter.is_reverse}}")
+    IS_REVERSE: bool = True if "{{cookiecutter.is_reverse}}".lower() in ["true", "t", "yes", "y", 1] else False
 
     BOOTSTRAP_SERVERS: Optional[str] = os.getenv("BOOTSTRAP_SERVERS", None)
     TOPIC_NAME: Optional[str] = os.getenv("TOPIC_NAME", None)
