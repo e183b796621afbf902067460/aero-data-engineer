@@ -1,19 +1,16 @@
 from fastapi import FastAPI
 
-from app.observer import observer
-from app.settings import settings
-from app.streaming import fastkafka_app
+from app.containers.application import ApplicationContainer
 
+container = ApplicationContainer()
+container.wire(modules=[__name__])
 
-@fastkafka_app.run_in_background()
-async def _():
-    await observer()
-
-
-fastapi_app = FastAPI(lifespan=fastkafka_app.fastapi_lifespan(kafka_broker_name=settings.KAFKA_BROKER_URL))
+# TODO import particular lifespan function
+app = FastAPI(lifespan=...)
+app.container = container
 
 
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run(app="__main__:fastapi_app", host="0.0.0.0")
+    uvicorn.run(app="__main__:app", host="0.0.0.0")
