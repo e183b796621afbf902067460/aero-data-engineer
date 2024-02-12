@@ -4,5 +4,8 @@
   "is_reverse": "False",
   "description": "Streaming Service — {{cookiecutter.blockchain.lower()}} ({{cookiecutter.address.lower()}})",
   "project": "streaming-service-{{cookiecutter.blockchain.lower()}}-{{cookiecutter.address.lower()}}",
-  "username": "e183b796621afbf902067460"
+  "username": "e183b796621afbf902067460",
+  "_copy_without_render": [
+        "*.yml"
+    ]
 }
