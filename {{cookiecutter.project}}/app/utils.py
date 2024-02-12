@@ -1,7 +1,38 @@
+import asyncio
+
+from app.adapters.connections.kafka.producer import AIOKafkaProducerConnection
+from app.schemas.transactions.schema import TransactionsBatch
+from app.settings import settings
+
 INFINITY = iter(int, 1)
 
 
-def strtobool(value: str) -> int:
+async def to_clickhouse(producer: AIOKafkaProducerConnection, events: TransactionsBatch) -> None:
+    """Asynchronously send real-time transactions to ClickHouse integrated with Kafka engine.
+
+    Args:
+    ----
+        producer (AIOKafkaProducerConnection): A Kafka producer connection.
+        events (TransactionsBatch): Batch of real-time transactions events.
+
+    Returns:
+    -------
+        None
+
+    Note:
+    ----
+        This method uses the provided Kafka producer to send each transaction series
+        in the provided batch to the Kafka topic.
+    """
+    await asyncio.gather(
+        *(
+            producer.send(topic=settings.TOPIC_NAME, value=dict(series))
+            for series in events.q_real_time_tx_processing_series
+        ),
+    ) if events.q_real_time_tx_processing_series else ...
+
+
+def strtobool(value: str) -> bool:
     """Convert a string representing a boolean value to an integer.
 
     Args:
@@ -18,8 +49,7 @@ def strtobool(value: str) -> int:
     """
     value = value.lower()
     if value in ("y", "yes", "t", "true", "on", "1"):
-        return 1
+        return True
     elif value in ("n", "no", "f", "false", "off", "0"):
-        return 0
-    else:
-        raise ValueError(f"invalid truth value {value}")
+        return False
+    raise ValueError(f"Invalid truth value {value}.")
