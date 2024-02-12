@@ -5,6 +5,20 @@
 
 A cookiecutter-based project to stream data from [liquidity pool](https://{{cookiecutter.blockchain}}/address/{{cookiecutter.address}}).
 
+# Configuration
+
+- Clone current repository:
+```bash
+git clone https://github.com/{{cookiecutter.username}}/{{cookiecutter.project}}.git
+```
+
+- Get into the project folder:
+```bash
+cd {{cookiecutter.project}}/
+```
+
+- Set `WSS_NODE_PROVIDER` environment variable in [docker-compose.yaml](https://github.com/{{cookiecutter.username}}/{{cookiecutter.project}}/blob/master/docker-compose.yaml).
+
 # Quickstart
 
 - Create `venv` and activate it:
@@ -64,8 +78,6 @@ pre-commit run --all-files
 ### Kafka environment variables
 
 - `BOOTSTRAP_SERVERS`: Kafka application bootstrap servers.
-- `KAFKA_BROKER_URL`: Kafka application broker URL.
-- `KAFKA_BROKER_PORT`: Kafka application broker port.
 - `TOPIC_NAME`: Kafka application topic name.
 
 ### Node environment variables
@@ -83,7 +95,7 @@ docker-compose up -d --build --force-recreate
 
 - Stop all services:
 ```bash
-docker-compose down
+docker-compose down -v
 ```
 
 <p><small>Based on <a target="_blank" href="https://github.com/e183b796621afbf902067460/quickview-template">quickview-template</a>.</small></p>
