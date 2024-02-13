@@ -8,6 +8,9 @@ on:
       - master
       - dev
 
+env:
+  WSS_NODE_PROVIDER: ${{ secrets.WSS_NODE_PROVIDER }}
+
 jobs:
 
   pytest:
