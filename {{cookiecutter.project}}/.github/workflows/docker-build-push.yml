@@ -10,16 +10,13 @@ jobs:
   docker:
     runs-on: ubuntu-latest
 
-    env:
-      REPOSITORY_NAME: ${{ steps.extract_repository_name.outputs.repository_name }}
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Extract Repository Name
-        id: extract_repository_name
-        run: echo "::set-output name=repository_name::$(echo "${{ github.repository }}" | cut -d'/' -f2)"
+      - name: Set Repository Name
+        id: repository-selector
+        run: echo "REPOSITORY_NAME=$(echo "${{ github.repository }}" | cut -d'/' -f2)" >> "$GITHUB_OUTPUT"
 
       - name: Login to Docker Hub
         uses: docker/login-action@v3
@@ -32,6 +29,8 @@ jobs:
 
       - name: Build and push
         uses: docker/build-push-action@v5
+        env:
+          REPOSITORY_NAME: ${{ steps.repository-selector.outputs.REPOSITORY_NAME }}
         with:
           context: .
           file: ./Dockerfile
@@ -40,6 +39,8 @@ jobs:
 
       - name: DockerHub Description
         uses: peter-evans/dockerhub-description@v3
+        env:
+          REPOSITORY_NAME: ${{ steps.repository-selector.outputs.REPOSITORY_NAME }}
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
