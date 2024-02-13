@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "{{cookiecutter.project}}"
+name = "quickview-streaming"
 version = "0.0.1"
-description = "{{cookiecutter.description}}"
+description = "Streaming Service — polygonscan.com (0xae81fac689a1b4b1e06e7ef4a2ab4cd8ac0a087d)"
 authors = ["e183b796621afbf902067460 <606d18446a06fe9738fd@gmail.com>"]
 
 [tool.poetry.dependencies]
@@ -18,7 +18,6 @@ httpx = "~=0.24.1"
 loguru = "^0.7.2"
 web3 = "^6.11.4"
 coverage = "^7.3.4"
-dependency-injector = "^4.41.0"
 aiokafka = "^0.10.0"
 
 [tool.poetry.group.linters.dependencies]

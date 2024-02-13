@@ -17,6 +17,7 @@ RUN poetry config virtualenvs.create false
 RUN poetry config installer.max-workers 8
 RUN poetry install --no-root --no-interaction --no-ansi
 
+RUN pip3 install dependency-injector==4.41.0
 RUN pip3 install -e "git+https://github.com/e183b796621afbf902067460/raffaelo.git#egg=raffaelo_quickswap_v3&subdirectory=_modules/raffaelo-quickswap-v3/" --config-settings editable_mode=strict
 
 COPY ./app /code/app
