@@ -4,7 +4,7 @@ from app.services.quickswap_v3.service import QuickSwapV3HTTPService, QuickSwapV
 from app.settings import settings
 
 
-class QuickSwapV3ServiceContainer(containers.DeclarativeContainer):
+class QuickSwapV3Container(containers.DeclarativeContainer):
     """Container class for managing services related to QuickSwap V3.
 
     This container provides singleton instances of QuickSwapV3WSSService
