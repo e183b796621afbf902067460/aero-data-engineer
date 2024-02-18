@@ -86,7 +86,7 @@ pre-commit run --all-files
 docker-compose up -d --build --force-recreate
 ```
 
-- Check [`KafkaUI`](http://0.0.0.0:8080/) and `ClickHouse` streaming data.
+- Check [`KafkaUI`](http://0.0.0.0:8080/) streaming data.
 
 - Stop all services:
 ```bash

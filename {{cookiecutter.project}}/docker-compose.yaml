@@ -49,29 +49,6 @@ services:
     networks:
       - {{cookiecutter.project}}-tier
 
-  clickhouse:
-    build:
-      context: ./images/clickhouse
-      dockerfile: Dockerfile
-      args:
-        - KAFKA_BROKER_LIST=kafka:9092
-        - KAFKA_TOPIC_LIST=topic
-        - KAFKA_GROUP_NAME=q_real_time_tx_processing_ch
-    environment:
-      CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT: 1
-      CLICKHOUSE_HOST: 0.0.0.0
-      CLICKHOUSE_PASSWORD: clickhouse
-    ports:
-      - '8123:8123'
-    healthcheck:
-      test: wget --no-verbose --tries=1 --spider http://0.0.0.0:8123/ping || exit 1
-    restart: always
-    depends_on:
-      kafka:
-        condition: service_healthy
-    networks:
-      - {{cookiecutter.project}}-tier
-
   app:
     command: python3 app/__main__.py
     restart: always
@@ -84,7 +61,7 @@ services:
       BOOTSTRAP_SERVERS: kafka:9092
       TOPIC_NAME: topic
     depends_on:
-      clickhouse:
+      kafka:
         condition: service_healthy
     networks:
       - {{cookiecutter.project}}-tier

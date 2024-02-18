@@ -3,7 +3,7 @@
 echo "Moving core files to project's root $(pwd)/."
 
 # Function to move and check
-standardize() {
+docker-entrypoint-initdb() {
     src="$1"
     dest="$2"
 
@@ -17,40 +17,37 @@ standardize() {
 }
 
 # Move .github to $(pwd)
-standardize "./{{cookiecutter.project}}/.github" "$(pwd)/"
+docker-entrypoint-initdb "./{{cookiecutter.project}}/.github" "$(pwd)/"
 
 # Move app to $(pwd)
-standardize "./{{cookiecutter.project}}/app" "$(pwd)/"
-
-# Move images to $(pwd)
-standardize "./{{cookiecutter.project}}/images" "$(pwd)/"
+docker-entrypoint-initdb "./{{cookiecutter.project}}/app" "$(pwd)/"
 
 # Move tests to $(pwd)
-standardize "./{{cookiecutter.project}}/tests" "$(pwd)/"
+docker-entrypoint-initdb "./{{cookiecutter.project}}/tests" "$(pwd)/"
 
 # Move .gitignore to $(pwd)
-standardize "./{{cookiecutter.project}}/.gitignore" "$(pwd)/"
+docker-entrypoint-initdb "./{{cookiecutter.project}}/.gitignore" "$(pwd)/"
 
 # Move .pre-commit-config.yaml to $(pwd)
-standardize "./{{cookiecutter.project}}/.pre-commit-config.yaml" "$(pwd)/"
+docker-entrypoint-initdb "./{{cookiecutter.project}}/.pre-commit-config.yaml" "$(pwd)/"
 
 # Move docker-compose.yaml to $(pwd)
-standardize "./{{cookiecutter.project}}/docker-compose.yaml" "$(pwd)/"
+docker-entrypoint-initdb "./{{cookiecutter.project}}/docker-compose.yaml" "$(pwd)/"
 
 # Move Dockerfile to $(pwd)
-standardize "./{{cookiecutter.project}}/Dockerfile" "$(pwd)/"
+docker-entrypoint-initdb "./{{cookiecutter.project}}/Dockerfile" "$(pwd)/"
 
 # Move LICENSE to $(pwd)
-standardize "./{{cookiecutter.project}}/LICENSE" "$(pwd)/"
+docker-entrypoint-initdb "./{{cookiecutter.project}}/LICENSE" "$(pwd)/"
 
 # Move poetry.lock to $(pwd)
-standardize "./{{cookiecutter.project}}/poetry.lock" "$(pwd)/"
+docker-entrypoint-initdb "./{{cookiecutter.project}}/poetry.lock" "$(pwd)/"
 
 # Move pyproject.toml to $(pwd)
-standardize "./{{cookiecutter.project}}/pyproject.toml" "$(pwd)/"
+docker-entrypoint-initdb "./{{cookiecutter.project}}/pyproject.toml" "$(pwd)/"
 
 # Move README.md to $(pwd)
-standardize "./{{cookiecutter.project}}/README.md" "$(pwd)/"
+docker-entrypoint-initdb "./{{cookiecutter.project}}/README.md" "$(pwd)/"
 
 # Remove {{cookiecutter.project}} directory
 echo "Removing {{cookiecutter.project}} directory..."
