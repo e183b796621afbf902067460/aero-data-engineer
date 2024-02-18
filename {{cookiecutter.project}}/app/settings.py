@@ -1,5 +1,5 @@
 import os
-from typing import Optional
+from typing import Optional, List
 
 from dotenv import load_dotenv
 from pydantic_settings import BaseSettings
@@ -34,7 +34,7 @@ class _Settings(BaseSettings):
     ADDRESS: str = "{{cookiecutter.address}}"
     IS_REVERSE: bool = True if "{{cookiecutter.is_reverse}}".lower() in ["true", "t", "yes", "y", 1] else False
 
-    BOOTSTRAP_SERVERS: Optional[str] = os.getenv("BOOTSTRAP_SERVERS", None)
+    BOOTSTRAP_SERVERS: List[str] = os.getenv("BOOTSTRAP_SERVERS", None).split(sep=',')
     TOPIC_NAME: Optional[str] = os.getenv("TOPIC_NAME", None)
 
     WSS_NODE_PROVIDER: Optional[str] = os.getenv("WSS_NODE_PROVIDER", None)
