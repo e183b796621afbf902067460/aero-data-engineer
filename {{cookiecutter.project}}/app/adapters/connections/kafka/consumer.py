@@ -28,7 +28,7 @@ class AIOKafkaConsumerConnection(AIOKafkaConsumer):
     def __init__(self, *args, **kwargs):
         AIOKafkaConsumer.__init__(
             self,
-            bootstrap_servers=settings.BOOTSTRAP_SERVERS,
+            bootstrap_servers=settings.BOOTSTRAP_SERVERS.split(sep=","),
             value_deserializer=lambda message: json.loads(
                 message.decode("utf-8"),
             ),
