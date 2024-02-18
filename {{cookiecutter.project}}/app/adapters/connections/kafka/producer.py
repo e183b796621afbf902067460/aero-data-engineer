@@ -28,7 +28,7 @@ class AIOKafkaProducerConnection(AIOKafkaProducer):
     def __init__(self, *args, **kwargs):
         AIOKafkaProducer.__init__(
             self,
-            bootstrap_servers=settings.BOOTSTRAP_SERVERS,
+            bootstrap_servers=settings.BOOTSTRAP_SERVERS.split(sep=","),
             value_serializer=lambda message: json.dumps(
                 message,
             ).encode("utf-8"),
