@@ -34,7 +34,7 @@ pipx run cookiecutter gh:e183b796621afbf902067460/quickview-template
 
 - Move project's files to the root:
 ```bash
-bash {{cookiecutter.project}}/scripts/standardize.sh
+bash {{cookiecutter.project}}/docker-entrypoint-initdb.d/docker-entrypoint-initdb.sh
 ```
 
 # Push

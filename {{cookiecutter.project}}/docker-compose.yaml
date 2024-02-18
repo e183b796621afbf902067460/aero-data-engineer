@@ -61,7 +61,7 @@ services:
       BOOTSTRAP_SERVERS: kafka:9092
       TOPIC_NAME: topic
     depends_on:
-      clickhouse:
+      kafka:
         condition: service_healthy
     networks:
       - {{cookiecutter.project}}-tier
